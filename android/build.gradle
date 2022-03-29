@@ -10,18 +10,18 @@ def getExtValue(prop, fallback) {
     rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
 }
 
-def _buildToolsVersion  = getExtValue('buildToolsVersion', '28.0.3')
-def _compileSdkVersion  = getExtValue('compileSdkVersion', 28)
-def _targetSdkVersion   = getExtValue('targetSdkVersion', 28)
-def _minSdkVersion      = getExtValue('minSdkVersion', 16)
+def _buildToolsVersion  = getExtValue('buildToolsVersion', '30.0.2')
+def _compileSdkVersion  = getExtValue('compileSdkVersion', 30)
+def _targetSdkVersion   = getExtValue('targetSdkVersion', 30)
+def _minSdkVersion      = getExtValue('minSdkVersion', 21)
 
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath 'com.android.tools.build:gradle:4.2.2'
     }
 }
 
@@ -49,7 +49,6 @@ android {
 repositories {
     mavenLocal()
     google()
-    jcenter()
     maven {
         url "$rootDir/../node_modules/react-native/android"
     }
@@ -57,7 +56,7 @@ repositories {
 
 dependencies {
     compileOnly 'com.facebook.react:react-native:+'
-    implementation 'me.relex:photodraweeview:1.1.3'
+    implementation 'me.relex:photodraweeview:2.1.0'
 }
 
 task customClean(type: Delete) {
